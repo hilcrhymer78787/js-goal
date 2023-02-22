@@ -175,3 +175,24 @@ document.querySelector("#form-button").addEventListener('click', function () {
   転職回数：${formNum}
   `);
 });
+
+
+//非同期通信
+function createLi(parentId, key, value) {
+  var elem = document.createElement('li');
+  elem.innerHTML = `${key}......${value}`;
+  document.querySelector(parentId).appendChild(elem);
+}
+fetch("https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json")
+  .then(response => {
+    return response.json();
+  })
+  .then(text => {
+    createLi('#data_content', 'チーム名', text.squadName)
+    createLi('#data_content', '活動範囲', text.homeTown)
+    createLi('#data_content', '結成', text.formed)
+    createLi('#data_content', '活動しているか', text.active ? 'している' : 'していない')
+  })
+  .catch(error => {
+    alert("失敗しました");
+  });

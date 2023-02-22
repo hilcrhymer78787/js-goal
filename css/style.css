@@ -498,13 +498,29 @@ a {
   margin-bottom: 15px;
 }
 
-.ask_content ul li dl{
+.ask_content ul li dl {
   display: flex;
 }
 
 .ask_content ul li dt {
   width: 100px;
 }
+
+/* data sp
+--------------------------------------------- */
+
+.data {
+  padding: 70px 0;
+  background-color: rgb(211, 253, 211);
+}
+
+.data_title {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#data_content {}
 
 
 /* footer sp
