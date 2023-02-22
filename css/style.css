@@ -520,7 +520,10 @@ a {
   margin-bottom: 20px;
 }
 
-#data_content {}
+#data_content {
+  padding: 20px;
+  border: 2px solid red;
+}
 
 
 /* footer sp
