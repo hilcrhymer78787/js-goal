@@ -2,10 +2,10 @@
 const header_icn = document.querySelector('.header_icn');
 const header_nav = document.querySelector('.header_nav');
 
-header_icn.addEventListener('click',function(){
-    header_nav.classList.toggle('is-open');
+header_icn.addEventListener('click', function () {
+  header_nav.classList.toggle('is-open');
 });
-header_nav.addEventListener('click',function(){
+header_nav.addEventListener('click', function () {
   this.classList.toggle('is-open');
 });
 
@@ -14,24 +14,24 @@ header_nav.addEventListener('click',function(){
 // アコーディオン
 const accordions = document.querySelectorAll('.accordion');
 
-for(let i= 0; i < accordions.length; i++){
+for (let i = 0; i < accordions.length; i++) {
 
-    let accordion_body = accordions[i].querySelector('.accordion_body');
-    accordion_body.style.height = '0px';
-    accordion_body.style.overflow = 'hidden';
-    accordion_body.style.transition = '.3s';
-    
-    accordions[i].addEventListener('click', function() {
+  let accordion_body = accordions[i].querySelector('.accordion_body');
+  accordion_body.style.height = '0px';
+  accordion_body.style.overflow = 'hidden';
+  accordion_body.style.transition = '.3s';
+
+  accordions[i].addEventListener('click', function () {
 
     accordions[i].classList.toggle('active');
     accordion_body.classList.toggle('active');
 
-    if(accordion_body.classList.contains('active')) {
+    if (accordion_body.classList.contains('active')) {
       accordion_body.style.height = accordion_body.scrollHeight + 'px';
       accordion_body.style.marginTop = '15px';
     } else {
-        accordion_body.style.height = '0px';
-        accordion_body.style.marginTop = '0px';
+      accordion_body.style.height = '0px';
+      accordion_body.style.marginTop = '0px';
     }
   });
 }
@@ -43,8 +43,8 @@ let recruit_tab_nav = document.querySelectorAll('.recruit_tab_nav');
 let recruit_tab_body = document.querySelectorAll('.recruit_tab_body');
 for (let i = 0; i < recruit_tab_nav.length; i++) {
   let n = i;
-  recruit_tab_nav[n].addEventListener('click', function() {
-    for(let t = 0; t < recruit_tab_nav.length; t++){
+  recruit_tab_nav[n].addEventListener('click', function () {
+    for (let t = 0; t < recruit_tab_nav.length; t++) {
       recruit_tab_body[t].classList.remove('is-open');
       recruit_tab_nav[t].classList.remove('is-open');
     }
@@ -61,17 +61,17 @@ let count = 0;
 const timer = 4000;
 
 main_slide[0].classList.add('is-open');
-setTimeout("slideshow()",timer);
+setTimeout("slideshow()", timer);
 
-function slideshow(){
+function slideshow() {
   main_slide[count].classList.remove('is-open');
-  if(count <= main_slide.length-2){
+  if (count <= main_slide.length - 2) {
     count++
-  }else{
+  } else {
     count = 0
   }
   main_slide[count].classList.add('is-open');
-  setTimeout("slideshow()",timer);
+  setTimeout("slideshow()", timer);
 }
 
 
@@ -79,20 +79,20 @@ function slideshow(){
 // トップへ戻る追従ボタン
 let scrollY = window.pageYOffset;
 let cmn_toTop = document.querySelector('#cmn_toTop');
-cmn_toTop.addEventListener("click", function(){
-    window.scroll({
-        top: 0,
-        behavior: 'smooth'
-    });
+cmn_toTop.addEventListener("click", function () {
+  window.scroll({
+    top: 0,
+    behavior: 'smooth'
+  });
 });
 window.addEventListener('scroll', function () {
   scrollY = window.pageYOffset;
-    if(scrollY > 200) {
-        cmn_toTop.style.display = 'block';
-    } 
-    else {
-        cmn_toTop.style.display = 'none';
-    }
+  if (scrollY > 200) {
+    cmn_toTop.style.display = 'block';
+  }
+  else {
+    cmn_toTop.style.display = 'none';
+  }
 });
 
 
@@ -108,7 +108,7 @@ for (let i = 0; i < Marker.length; i++) {
 }
 
 for (let i = 0; i < navList.length; i++) {
-  navList[i].addEventListener('click', function(){
+  navList[i].addEventListener('click', function () {
     window.scroll({
       top: MarkerTop[i],
       behavior: 'smooth'
@@ -119,7 +119,7 @@ for (let i = 0; i < navList.length; i++) {
 
 
 // フェードコンテンツ
-let fadeContents = document.querySelectorAll('.fadeContents'); 
+let fadeContents = document.querySelectorAll('.fadeContents');
 let fadeContentsTop = [];
 let windowH = window.innerHeight;
 let remainder = 50;
@@ -132,10 +132,46 @@ window.addEventListener('resize', function () {
 window.addEventListener('scroll', function () {
   scrollY = window.pageYOffset;
   for (var i = 0; i < fadeContents.length; i++) {
-    if(scrollY + windowH > fadeContentsTop[i] + remainder) {
+    if (scrollY + windowH > fadeContentsTop[i] + remainder) {
       fadeContents[i].classList.add('show');
     } else {
       fadeContents[i].classList.remove('show');
     }
   }
+});
+
+//フォーム
+document.querySelector("#form-button").addEventListener('click', function () {
+  const formName = document.querySelector("#ask-form").formName.value
+  const formNameError = document.querySelector("#name-error")
+  const formEmail = document.querySelector("#ask-form").formEmail.value
+  const formEmailError = document.querySelector("#email-error")
+  const formGender = document.querySelector("#ask-form").formGender.value
+  const formGenderError = document.querySelector("#gender-error")
+  const formNum = document.querySelector("#ask-form").formNum.value
+  let isError = false
+  formNameError.innerHTML = ""
+  formEmailError.innerHTML = ""
+  formGenderError.innerHTML = ""
+  if (formName === "") {
+    formNameError.innerHTML = "名前は必須です"
+    isError = true;
+  }
+  if (!(/.+@.+.+/.test(formEmail))) {
+    formEmailError.innerHTML = "正しい形式で入力してください"
+    isError = true;
+  }
+  if (formGender === "") {
+    formGenderError.innerHTML = "性別を選択してください"
+    isError = true;
+  }
+  if (isError) return;
+  alert(`
+  送信に成功しました！！
+  ーーーーーーーーーーー
+  名前：${formName}
+  メール：${formEmail}
+  性別：${formGender}
+  転職回数：${formNum}
+  `);
 });

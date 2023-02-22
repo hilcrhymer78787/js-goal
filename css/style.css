@@ -21,6 +21,11 @@ a {
   display: none;
 }
 
+.cmn_error {
+  color: red;
+  font-size: 15px;
+}
+
 .cmn_contact {
   padding: 50px;
 }
@@ -468,6 +473,39 @@ a {
 .recruit_tab_body.is-open {
   display: block;
 }
+
+/* ask sp
+--------------------------------------------- */
+
+.ask {
+  padding: 70px 0;
+  background-color: rgb(255, 255, 180);
+}
+
+.ask_title {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ask_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ask_content ul li {
+  margin-bottom: 15px;
+}
+
+.ask_content ul li dl{
+  display: flex;
+}
+
+.ask_content ul li dt {
+  width: 100px;
+}
+
 
 /* footer sp
 --------------------------------------------- */
