@@ -521,6 +521,7 @@ a {
 }
 
 #data_content {
+  height: 165px;
   padding: 20px;
   border: 2px solid red;
 }
