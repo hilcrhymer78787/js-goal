@@ -89,7 +89,7 @@ a {
 
 .fadeContents {
   opacity: 0;
-  transition: 1s;
+  transition: 0.3s;
   transform: translateY(100px);
 }
 
