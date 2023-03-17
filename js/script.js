@@ -98,24 +98,15 @@ window.addEventListener('scroll', function () {
 
 
 
-// ヘッダーナビ
-let navList = document.querySelectorAll('.header_nav_list_link');
-let Marker = document.querySelectorAll('.scrollNav_marker');
-let MarkerTop = [];
-
-for (let i = 0; i < Marker.length; i++) {
-  MarkerTop.push(window.pageYOffset + Marker[i].getBoundingClientRect().top - 100);
-}
-
-for (let i = 0; i < navList.length; i++) {
-  navList[i].addEventListener('click', function () {
-    window.scroll({
-      top: MarkerTop[i],
-      behavior: 'smooth'
-    });
-  });
-}
-
+// ページ内スクロール
+$('a[href^="#"]').click(function () {
+  const speed = 600;
+  let href = $(this).attr("href");
+  let target = $(href == "#" || href == "" ? "html" : href);
+  let position = target.offset().top - 100;
+  $("body,html").animate({ scrollTop: position }, speed, "swing");
+  return false;
+});
 
 
 // フェードコンテンツ
