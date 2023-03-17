@@ -104,7 +104,7 @@ let Marker = document.querySelectorAll('.scrollNav_marker');
 let MarkerTop = [];
 
 for (let i = 0; i < Marker.length; i++) {
-  MarkerTop.push(window.pageYOffset + Marker[i].getBoundingClientRect().top - 170);
+  MarkerTop.push(window.pageYOffset + Marker[i].getBoundingClientRect().top - 100);
 }
 
 for (let i = 0; i < navList.length; i++) {
@@ -122,7 +122,6 @@ for (let i = 0; i < navList.length; i++) {
 let fadeContents = document.querySelectorAll('.fadeContents');
 let fadeContentsTop = [];
 let windowH = window.innerHeight;
-let remainder = 50;
 for (let i = 0; i < fadeContents.length; i++) {
   fadeContentsTop.push(window.pageYOffset + fadeContents[i].getBoundingClientRect().top);
 }
@@ -132,7 +131,7 @@ window.addEventListener('resize', function () {
 window.addEventListener('scroll', function () {
   scrollY = window.pageYOffset;
   for (var i = 0; i < fadeContents.length; i++) {
-    if (scrollY + windowH > fadeContentsTop[i] + remainder) {
+    if (scrollY + windowH > fadeContentsTop[i]) {
       fadeContents[i].classList.add('show');
     } else {
       fadeContents[i].classList.remove('show');

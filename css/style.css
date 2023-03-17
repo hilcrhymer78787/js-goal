@@ -89,13 +89,11 @@ a {
 
 .fadeContents {
   opacity: 0;
-  transition: 0.6s;
-  transform: translateY(100px);
+  transition: 2s;
 }
 
 .fadeContents.show {
   opacity: 1;
-  transform: translateY(0px);
 }
 
 /* header sp
